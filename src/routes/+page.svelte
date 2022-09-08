@@ -26,7 +26,7 @@
 <section>
 	<h1>History of SpaceX</h1>
 	{JSON.stringify($ExampleQueryPagination)}
-	{#if $ExampleQueryPagination && $ExampleQueryPagination.isFetching}
+	<!-- {#if $ExampleQueryPagination && $ExampleQueryPagination.isFetching}
 		Loading...
 	{:else if $ExampleQueryPagination}
 		<ul>
@@ -43,7 +43,7 @@
 		<button disabled={$ExampleQueryPagination.isFetching} on:click={() => {
 			ExampleQueryPagination.loadNextPage(context);}}
 			>Load More</button>
-	{/if}
+	{/if} -->
 </section>
 
 <style>
