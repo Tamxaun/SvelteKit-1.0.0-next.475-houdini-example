@@ -5,9 +5,9 @@
 	// $: ({ ExampleQueryPagination } = data)
 
 
-	import { graphql } from '$houdini';
+	import { graphql, type SpacexHistoriesStore} from '$houdini';
 
-	const SpacexHistories = graphql`
+	const SpacexHistories:SpacexHistoriesStore = graphql`
 		query SpacexHistories {
 			histories(limit: 4, sort: "event_date_utc") {
 				title
