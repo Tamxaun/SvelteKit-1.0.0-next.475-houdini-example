@@ -1,6 +1,6 @@
 <script lang="ts">
-	// /** @type {import('./$types').Data */
-	// export let data: Data
+	// import type { PageData } from './$types';
+	// export let data: PageData
 
 	// $: ({ ExampleQueryPagination } = data)
 
@@ -40,8 +40,7 @@
 				</li>
 			{/each}
 		</ul>
-		<button disabled={$ExampleQueryPagination.isFetching} on:click={() => {
-			ExampleQueryPagination.loadNextPage(context);}}
+		<button disabled={$ExampleQueryPagination.isFetching} on:click={ExampleQueryPagination.loadNextPage}
 			>Load More</button>
 	{/if} -->
 </section>
