@@ -7,8 +7,8 @@
 
 	import { graphql } from '$houdini';
 
-	const ExampleQueryPagination = graphql`
-		query ExampleQueryPagination {
+	const SpacexHistories = graphql`
+		query SpacexHistories {
 			histories(limit: 4, sort: "event_date_utc") {
 				title
 				details
@@ -25,7 +25,7 @@
 
 <section>
 	<h1>History of SpaceX</h1>
-	{JSON.stringify($ExampleQueryPagination)}
+	{JSON.stringify($SpacexHistories)}
 	<!-- {#if $ExampleQueryPagination && $ExampleQueryPagination.isFetching}
 		Loading...
 	{:else if $ExampleQueryPagination}
