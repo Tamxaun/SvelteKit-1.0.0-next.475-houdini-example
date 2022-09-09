@@ -3,7 +3,7 @@
 	export let data: PageData;
 	$: ({ SpacexHistories } = data);
 
-	// Inline Quesry
+	// Inline Query
 	// import { graphql, type SpacexHistoriesStore } from '$houdini';
 
 	// const SpacexHistories: SpacexHistoriesStore = graphql`
