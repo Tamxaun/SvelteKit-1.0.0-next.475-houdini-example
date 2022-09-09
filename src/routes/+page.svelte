@@ -1,15 +1,20 @@
 <script lang="ts">
-	import { graphql, type SpacexHistoriesStore } from '$houdini';
+	import type { PageData } from './$types';
+	export let data: PageData;
+	$: ({ SpacexHistories } = data);
 
-	const SpacexHistories: SpacexHistoriesStore = graphql`
-		query SpacexHistories {
-			histories(limit: 4, sort: "event_date_utc") {
-				title
-				details
-				event_date_utc
-			}
-		}
-	`;
+	// Inline Quesry
+	// import { graphql, type SpacexHistoriesStore } from '$houdini';
+
+	// const SpacexHistories: SpacexHistoriesStore = graphql`
+	// 	query SpacexHistories {
+	// 		histories(limit: 4, sort: "event_date_utc") @paginate {
+	// 			title
+	// 			details
+	// 			event_date_utc
+	// 		}
+	// 	}
+	// `;
 </script>
 
 <svelte:head>
@@ -19,24 +24,23 @@
 
 <section>
 	<h1>History of SpaceX</h1>
-	{JSON.stringify($SpacexHistories)}
-	<!-- {#if $ExampleQueryPagination && $ExampleQueryPagination.isFetching}
-		Loading...
-	{:else if $ExampleQueryPagination}
+	{#if $SpacexHistories}
 		<ul>
-			{#each $ExampleQueryPagination.data?.histories ?? [] as historie}
+			{#each $SpacexHistories.data?.histories ?? [] as historie}
 				{@const date = new Date(historie?.event_date_utc).getUTCFullYear()}
 				<li data-icon={date}>
 					<div>
 						<div><b>{historie?.title}</b></div>
 						<div>{historie?.details}</div>
-					</div>					
+					</div>
 				</li>
 			{/each}
 		</ul>
-		<button disabled={$ExampleQueryPagination.isFetching} on:click={ExampleQueryPagination.loadNextPage}
-			>Load More</button>
-	{/if} -->
+		<button
+			disabled={$SpacexHistories.isFetching}
+			on:click={() => SpacexHistories.loadNextPage({ limit: 4 })}>Load More</button
+		>
+	{/if}
 </section>
 
 <style>
