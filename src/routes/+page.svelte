@@ -1,13 +1,7 @@
 <script lang="ts">
-	// import type { PageData } from './$types';
-	// export let data: PageData
+	import { graphql, type SpacexHistoriesStore } from '$houdini';
 
-	// $: ({ ExampleQueryPagination } = data)
-
-
-	import { graphql, type SpacexHistoriesStore} from '$houdini';
-
-	const SpacexHistories:SpacexHistoriesStore = graphql`
+	const SpacexHistories: SpacexHistoriesStore = graphql`
 		query SpacexHistories {
 			histories(limit: 4, sort: "event_date_utc") {
 				title
@@ -15,7 +9,7 @@
 				event_date_utc
 			}
 		}
-	`
+	`;
 </script>
 
 <svelte:head>
@@ -76,8 +70,8 @@
 
 	li::before {
 		content: attr(data-icon);
-		padding: .25em 0;
-		font-size: .75em;
+		padding: 0.25em 0;
+		font-size: 0.75em;
 	}
 
 	button {
@@ -88,7 +82,7 @@
 	}
 
 	button:disabled {
-		opacity: .5
+		opacity: 0.5;
 	}
 
 	button:hover {
@@ -98,5 +92,4 @@
 	button:active {
 		transform: translateY(4px);
 	}
-
 </style>

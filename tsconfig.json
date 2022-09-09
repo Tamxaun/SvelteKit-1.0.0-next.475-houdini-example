@@ -10,12 +10,24 @@
 		"sourceMap": true,
 		"strict": true,
 		"strictNullChecks": true,
-		"rootDirs": [".", "./.svelte-kit/types", "./.$houdini/types"],
+		"rootDirs": [
+			".",
+			"./.svelte-kit/types",
+			"./.$houdini/types"
+		],
 		"paths": {
-			"$lib": ["src/lib"],
-			"$lib/*": ["src/lib/*"],
-			"$houdini": ["$houdini"],
-			"$houdini/*": ["$houdini/*"]
+			"$lib": [
+				"./src/lib"
+			],
+			"$lib/*": [
+				"./src/lib/*"
+			],
+			"$houdini": [
+				"./$houdini"
+			],
+			"$houdini/*": [
+				"./$houdini/*"
+			]
 		}
 	}
 }
