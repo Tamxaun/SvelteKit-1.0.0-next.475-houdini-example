@@ -2,6 +2,9 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 	$: ({ SpacexHistories } = data);
+    $: if(SpacexHistories) {
+        console.log(SpacexHistories.data);
+    }
 
 	// Inline Query
 	// import { graphql, type SpacexHistoriesStore } from '$houdini';
@@ -27,8 +30,9 @@
 	{#if $SpacexHistories}
 		<ul>
 			{#each $SpacexHistories.data?.histories ?? [] as historie}
-				{@const date = new Date(historie?.event_date_utc).getUTCFullYear()}
-				<li data-icon={date}>
+				{@const year = new Date(historie?.event_date_utc).getUTCFullYear()}
+                {@const month = new Date(historie?.event_date_utc).getUTCMonth()}
+				<li data-date={`${month}.${year}`}>
 					<div>
 						<div><b>{historie?.title}</b></div>
 						<div>{historie?.details}</div>
@@ -63,7 +67,7 @@
 	ul li {
 		display: grid;
 		grid-template-columns: 0 1fr;
-		gap: 3em;
+		gap: 3.5em;
 		align-items: start;
 		font-size: 1rem;
 		line-height: 1.25;
@@ -73,7 +77,7 @@
 	}
 
 	li::before {
-		content: attr(data-icon);
+		content: attr(data-date);
 		padding: 0.25em 0;
 		font-size: 0.75em;
 	}
