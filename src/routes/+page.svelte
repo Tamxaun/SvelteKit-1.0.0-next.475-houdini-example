@@ -2,9 +2,9 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 	$: ({ SpacexHistories } = data);
-	$: if(SpacexHistories) {
-		console.log("Histories", $SpacexHistories.data.histories);
-		console.log("Variables", $SpacexHistories.variables);
+	$: if (SpacexHistories) {
+		console.log('Histories', $SpacexHistories.data?.histories);
+		console.log('Variables', $SpacexHistories.variables);
 	}
 
 	// Inline Query
