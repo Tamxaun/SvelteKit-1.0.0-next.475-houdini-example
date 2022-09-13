@@ -1,4 +1,4 @@
-query SpacexHistories($limit: Int) {
+query SpacexHistories($limit: Int!) {
    histories(limit: $limit, sort: "event_date_utc") @paginate {
       title
       details
