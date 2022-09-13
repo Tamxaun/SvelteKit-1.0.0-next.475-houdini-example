@@ -1,11 +1,16 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import type { SpacexHistoriesStore } from '$houdini';
+
 	export let data: PageData;
+
+	let SpacexHistories: SpacexHistoriesStore;
+
 	$: ({ SpacexHistories } = data);
-	$: if (SpacexHistories) {
-		console.log('Histories', $SpacexHistories.data?.histories);
-		console.log('Variables', $SpacexHistories.variables);
-	}
+	// $: if (SpacexHistories) {
+	// 	console.log('Histories', $SpacexHistories.data?.histories);
+	// 	console.log('Variables', $SpacexHistories.variables);
+	// }
 
 	// Inline Query
 	// import { graphql, type SpacexHistoriesStore } from '$houdini';
@@ -43,7 +48,7 @@
 		</ul>
 		<button
 			disabled={$SpacexHistories.isFetching}
-			on:click={() => SpacexHistories.loadNextPage({ limit: 4 })}>Load More</button
+			on:click={() => SpacexHistories.loadNextPage({ limit: 1 })}>Load More</button
 		>
 	{/if}
 </section>
