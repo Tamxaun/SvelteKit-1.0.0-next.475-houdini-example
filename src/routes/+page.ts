@@ -1,12 +1,8 @@
-import type { PageLoad } from './$types';
-import { SpacexHistoriesStore } from "$houdini";
+import type { PageLoadEvent } from './$types';
+import type { SpacexHistories$input as Variables } from "$houdini";
 
-export const load: PageLoad = async (event) => {
-   const SpacexHistories = new SpacexHistoriesStore();
+export const SpacexHistoriesVariables: (event: PageLoadEvent) => Promise<Variables> = async (event) => {
+   console.log("event params: ", event.params);
 
-   const result = await SpacexHistories.fetch({ event, variables: { limit: 1 } });
-
-   console.log('do something with', result);
-
-   return { SpacexHistories }
-}
+   return { limit: 1 };
+};
